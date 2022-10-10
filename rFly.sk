@@ -1,0 +1,32 @@
+# rFly criado e desenvolvido por ReFlexoo.
+# Version:
+# 1.0
+
+#Em caso de problemas acesse: https://discord.gg/eehY3dH5XU ou https://discord.gg/47j272usWF
+
+# Permissão: vip.fly
+
+options:
+
+	LobbyMundo: Lobby
+
+command /fly [<text>]:
+	trigger:
+		if player has permission "vip.fly":
+			if player's world is "{@LobbyMundo}":
+				if {Fly.%player%} is not set:
+					set player's flight mode to true
+					send "&aAgora você pode voar!" to player
+					set {Fly.%player%} to true
+					stop
+				else:
+					delete {Fly.%player%}
+					send "&cAgora você já não pode mais voar." to player
+					set player's flight mode to false
+					stop
+			else:
+				send "&cErro! Você precisa estar no Lobby para executar este comando." to player
+				stop
+		else:
+			send "&cErro! Você precisa ser VIP &cou superior para executar este comando." to player
+			stop
